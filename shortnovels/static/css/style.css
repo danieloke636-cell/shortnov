@@ -20,7 +20,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background: #fff;
+    background: #00f;
     padding: 15px 20px;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     flex-wrap: wrap;
@@ -189,7 +189,7 @@ body {
 
 /* ---------------- Footer ---------------- */
 .site-footer {
-    background: #fff;
+    background: #00f;
     text-align: center;
     padding: 20px 0;
     border-top: 1px solid #ddd;
@@ -617,3 +617,4 @@ body {
     line-height: 1.5;
     margin-bottom: 15px;
 }
+
