@@ -1,0 +1,619 @@
+/* ---------------- Global ---------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, sans-serif;
+}
+
+body {
+    background: #f8f8f8;
+    color: #333;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* ---------------- Header / Navbar ---------------- */
+.top-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #fff;
+    padding: 15px 20px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    flex-wrap: wrap;
+}
+
+.nav-left, .nav-center, .nav-right {
+    display: flex;
+    align-items: center;
+}
+
+.nav-left {
+    flex: 1;
+}
+
+.nav-center {
+    flex: 2;
+    justify-content: center;
+}
+
+.nav-right {
+    flex: 1;
+    justify-content: flex-end;
+}
+
+.top-bar a.logo {
+    font-weight: bold;
+    font-size: 1.5em;
+    text-decoration: none;
+    color: #333;
+    margin-right: 20px;
+}
+
+.btn {
+    padding: 6px 12px;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #4CAF50;
+    color: #4CAF50;
+    text-decoration: none;
+    cursor: pointer;
+    margin-left: 10px;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn:hover {
+    background-color: #4CAF50;
+    color: #fff;
+}
+
+.search-bar {
+    width: 100%;
+    max-width: 400px;
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Profile dropdown */
+.profile-wrapper {
+    position: relative;
+}
+
+.profile-icon {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #4CAF50;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 45px;
+    right: 0;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 200px;
+    padding: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 5px 0;
+    color: #333;
+    text-decoration: none;
+}
+
+.dropdown-menu a:hover {
+    background: #f2f2f2;
+}
+
+/* ---------------- Container ---------------- */
+.container {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 0 15px;
+    flex: 1;
+}
+
+/* ---------------- Admin Tables ---------------- */
+.admin-container {
+    width: 100%;
+}
+
+.admin-section {
+    margin-bottom: 40px;
+}
+
+.admin-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.admin-table th, .admin-table td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+.admin-table th {
+    background-color: #f2f2f2;
+}
+
+.btn.small {
+    padding: 3px 6px;
+    font-size: 0.85em;
+}
+
+/* ---------------- Stats Grid ---------------- */
+.stats-grid {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.stat-card {
+    flex: 1;
+    min-width: 150px;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 20px;
+    text-align: center;
+}
+
+.stat-card strong {
+    font-size: 1.5em;
+    display: block;
+    margin-bottom: 5px;
+}
+
+/* ---------------- Footer ---------------- */
+.site-footer {
+    background: #fff;
+    text-align: center;
+    padding: 20px 0;
+    border-top: 1px solid #ddd;
+    margin-top: auto; /* Stick footer to bottom */
+}
+
+.footer-links a {
+    margin: 0 5px;
+    text-decoration: none;
+    color: #333;
+}
+
+.footer-copy {
+    margin-top: 5px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+/* ---------------- Responsive ---------------- */
+@media (max-width: 1024px) {
+    .nav-center {
+        order: 3;
+        width: 100%;
+        justify-content: center;
+        margin: 10px 0;
+    }
+
+    .nav-left, .nav-right {
+        flex: 1;
+    }
+
+    .admin-controls {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-left, .nav-center, .nav-right {
+        width: 100%;
+        margin: 5px 0;
+    }
+}
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.admin-table th,
+.admin-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.admin-table th {
+    background: #f4f4f4;
+}
+
+.status {
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.9em;
+}
+
+.status.published {
+    background: #4CAF50;
+    color: white;
+}
+
+.status.draft {
+    background: #999;
+    color: white;
+}
+/* ================= PROFILE DROPDOWN FIX ================= */
+.profile-wrapper {
+    position: relative;
+    z-index: 1001; /* Ensure dropdown is above other elements */
+}
+
+.dropdown-menu.show {
+    display: block; /* Ensure menu shows when toggled */
+}
+.novel-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+    gap: 20px;
+}
+
+.novel-card {
+    background: #111;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.novel-card img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.novel-card h3 {
+    margin-top: 10px;
+    font-size: 16px;
+}
+
+/* GRID: TWO HALVES */
+.novels-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+    padding: 20px;
+}
+
+/* CARD */
+.novel-card {
+    display: flex;
+    background: #111;
+    border-radius: 8px;
+    padding: 12px;
+    text-decoration: none;
+    color: white;
+    height: 180px;
+    overflow: hidden;
+}
+
+/* IMAGE */
+.novel-image {
+    width: 120px;
+    height: 100%;
+    flex-shrink: 0;
+}
+
+.novel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+.no-cover {
+    width: 100%;
+    height: 100%;
+    background: #333;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: #aaa;
+}
+
+/* TEXT */
+.novel-info {
+    padding-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.novel-info h3 {
+    margin: 0 0 6px 0;
+    font-size: 18px;
+}
+
+.novel-info p {
+    margin: 0;
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1.4;
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+    .novels-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ================= PAGE DIVISION ================= */
+.novels-page {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+/* LEFT & RIGHT COLUMN */
+.novels-column {
+    flex: 1; /* equal width for left and right */
+    display: flex;
+    flex-direction: column;
+    gap: 20px; /* space between novel cards */
+}
+
+/* ================= NOVEL CARD ================= */
+.novel-card {
+    display: flex;
+    background: #111; /* dark background */
+    border-radius: 10px;
+    overflow: hidden;
+    text-decoration: none;
+    color: #fff;
+    min-height: 140px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid rgba(255, 255, 255, 0.05); /* subtle invisible separation */
+}
+
+.novel-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* LEFT SIDE: COVER IMAGE */
+.novel-card .novel-image {
+    flex-shrink: 0;
+    width: 120px;
+    height: 100%;
+}
+
+.novel-card .novel-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* RIGHT SIDE: INFO */
+.novel-card .novel-info {
+    padding: 12px 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1; /* take remaining space */
+}
+
+.novel-card .novel-info h3 {
+    margin: 0 0 8px 0;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.novel-card .novel-info p {
+    margin: 0 0 8px 0;
+    font-size: 14px;
+    color: #ccc;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 2; /* only 2 lines */
+    -webkit-box-orient: vertical;
+}
+
+.novel-card .novel-info .genre {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: auto;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 1024px) {
+    .novels-page {
+        flex-direction: column; /* stack left/right on smaller screens */
+    }
+}
+.pagination {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.pagination .btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin: 0 5px;
+    border-radius: 5px;
+    background-color: #fff;
+    border: 1px solid #4CAF50;
+    color: #4CAF50;
+    text-decoration: none;
+    transition: all 0.2s ease-in-out;
+}
+
+.pagination .btn:hover {
+    background-color: #4CAF50;
+    color: #fff;
+}
+.novels-page {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap; /* allow columns to stack on small screens */
+}
+
+.novels-column {
+    flex: 1;
+    min-width: 300px; /* prevents it from shrinking too small */
+}
+
+@media (max-width: 768px) {
+    .novels-page {
+        flex-direction: column; /* stack columns vertically on mobile */
+    }
+}
+.novel-cover {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.novel-description {
+    max-width: 800px;
+    margin: 20px auto;
+    font-size: 16px;
+    line-height: 1.7;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+.chapter-list {
+    max-width: 800px;
+    margin: 20px auto;
+    list-style: none;
+    padding: 0;
+}
+
+.chapter-list li {
+    margin-bottom: 10px;
+}
+
+.chapter-list a {
+    text-decoration: none;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.chapter-list a:hover {
+    text-decoration: underline;
+}
+.chapter-content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 10px;
+    line-height: 1.7;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.chapter-nav {
+    max-width: 800px;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+}
+.admin-container {
+    max-width: 800px;
+    margin: 20px auto;
+    background: #1a1a1a;
+    padding: 25px;
+    border-radius: 12px;
+    color: #fff;
+}
+
+.admin-container h2 {
+    margin-bottom: 20px;
+}
+
+.admin-form label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.admin-form input[type="text"],
+.admin-form input[type="file"],
+.admin-form select,
+.admin-form textarea {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #444;
+    background: #111;
+    color: #fff;
+    font-size: 14px;
+    resize: vertical;
+}
+
+.admin-form textarea {
+    min-height: 200px;
+}
+
+.admin-form .btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+}
+
+.admin-actions {
+    margin-top: 20px;
+    display: flex;
+    gap: 10px;
+}
+.novel-description img.novel-cover {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+.novel-description h2 {
+    margin-top: 10px;
+    font-size: 28px;
+    color: #fff;
+}
+.novel-description p {
+    font-size: 16px;
+    color: #ccc;
+    line-height: 1.5;
+    margin-bottom: 15px;
+}

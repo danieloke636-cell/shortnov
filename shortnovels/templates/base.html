@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}ShortNovels{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+</head>
+<body>
+
+<!-- ================= HEADER / TOP BAR ================= -->
+<div class="top-bar">
+
+    <!-- LEFT: Logo + Library -->
+    <div class="nav-left">
+        <a href="{{ url_for('novels') }}" class="logo">ShortNovels</a>
+        <a href="{{ url_for('library') }}" class="btn">Library</a>
+    </div>
+
+    <!-- CENTER: Search Bar -->
+    <div class="nav-center">
+        <form action="{{ url_for('novels') }}" method="GET" style="width: 100%; max-width: 400px;">
+            <input type="text" name="q" class="search-bar" placeholder="Search novels..." value="{{ request.args.get('q', '') }}">
+        </form>
+    </div>
+
+    <!-- RIGHT: Login/Register or Profile -->
+    <div class="nav-right">
+        {% if session.get("user_id") %}
+            <div class="profile-wrapper">
+                <div class="profile-icon" id="profileBtn">
+                    {{ session["username"][0]|upper }}
+                </div>
+
+                <div class="dropdown-menu" id="profileMenu">
+                    <p><strong>{{ session["username"] }}</strong></p>
+
+                    {% if session.get("is_admin") %}
+                        <a href="{{ url_for('admin') }}">Admin Dashboard</a>
+                    {% endif %}
+
+                    <a href="{{ url_for('logout') }}">Logout</a>
+                </div>
+            </div>
+        {% else %}
+            <a href="{{ url_for('login') }}" class="btn">Login</a>
+            <a href="{{ url_for('register') }}" class="btn">Register</a>
+        {% endif %}
+    </div>
+
+</div>
+
+<!-- ================= PAGE CONTENT ================= -->
+<main class="container">
+    {% block content %}{% endblock %}
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="site-footer">
+    <div class="footer-links">
+        <a href="{{ url_for('about') }}">About</a>
+        <span>•</span>
+        <a href="{{ url_for('contact') }}">Contact</a>
+        <span>•</span>
+        <a href="{{ url_for('privacy') }}">Privacy</a>
+        <span>•</span>
+        <a href="{{ url_for('terms') }}">Terms</a>
+    </div>
+    <div class="footer-copy">
+        © 2025 ShortNovels. All rights reserved.
+    </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Edit Novel{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+
+    <h2>Edit Novel</h2>
+
+    <form action="{{ url_for('edit_novel', novel_id=novel.id) }}" method="POST" class="admin-form">
+
+        <label>Title</label>
+        <input type="text" name="title" value="{{ novel.title }}" required>
+
+        <label>Author</label>
+        <input type="text" name="author" value="{{ novel.author }}" required>
+
+        <label>Genre</label>
+        <input type="text" name="genre" value="{{ novel.genre }}" required>
+
+        <label>Description</label>
+        <textarea name="description" rows="8" required>{{ novel.description }}</textarea>
+
+        <label>Status</label>
+        <select name="status">
+            <option value="draft" {% if novel.status=='draft' %}selected{% endif %}>Draft</option>
+            <option value="published" {% if novel.status=='published' %}selected{% endif %}>Published</option>
+        </select>
+
+        <button type="submit" class="btn green">Update Novel</button>
+        <a href="{{ url_for('admin') }}" class="btn outline">Cancel</a>
+
+    </form>
+
+</div>
+{% endblock %}

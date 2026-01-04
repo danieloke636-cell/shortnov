@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block title %}Add Chapter{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+
+    <h2>Add Chapter</h2>
+    <p class="muted">Novel: <strong>{{ novel.title }}</strong></p>
+
+    <form method="POST" class="admin-form">
+
+        <label>Chapter Title</label>
+        <input type="text" name="title" placeholder="Enter chapter title" required>
+
+        <label>Chapter Content</label>
+        <textarea name="content" rows="15" placeholder="Write chapter content here..." required></textarea>
+
+        <button type="submit" class="btn green">Save Chapter</button>
+
+    </form>
+
+    <div class="admin-actions">
+        <a href="{{ url_for('manage_chapters', novel_id=novel.id) }}" class="btn outline">← Back to Chapters</a>
+        <a href="{{ url_for('admin') }}" class="btn outline">Admin Dashboard</a>
+    </div>
+
+</div>
+{% endblock %}

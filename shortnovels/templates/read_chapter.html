@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}{{ chapter.title }}{% endblock %}
+
+{% block content %}
+<h2>{{ chapter.title }}</h2>
+<p><strong>Views:</strong> {{ chapter.views }}</p>
+
+<div class="chapter-content">
+    {{ chapter.content|safe }}
+</div>
+
+<div class="chapter-nav">
+    {% if prev_chapter %}
+        <a href="{{ url_for('read_chapter', novel_id=novel.id, chapter_id=prev_chapter.id) }}">
+            ← Previous
+        </a>
+    {% endif %}
+
+    <a href="{{ url_for('novel_chapters', novel_id=novel.id) }}">
+        Back to Chapters
+    </a>
+
+    {% if next_chapter %}
+        <a href="{{ url_for('read_chapter', novel_id=novel.id, chapter_id=next_chapter.id) }}">
+            Next →
+        </a>
+    {% endif %}
+</div>
+{% endblock %}

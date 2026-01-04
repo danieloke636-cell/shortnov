@@ -1,0 +1,97 @@
+{% extends "base.html" %}
+{% block title %}Admin Dashboard{% endblock %}
+
+{% block content %}
+<h2>Admin Dashboard</h2>
+
+<div class="admin-container">
+
+    <!-- ---------------- STATS ---------------- -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <strong>{{ novels|length }}</strong>
+            Novels
+        </div>
+        <div class="stat-card">
+            <strong>{{ users|length }}</strong>
+            Users
+        </div>
+        <div class="stat-card">
+            <strong>{{ users|selectattr("is_admin")|list|length }}</strong>
+            Admins
+        </div>
+    </div>
+
+    <!-- ---------------- NOVELS MANAGEMENT ---------------- -->
+    <div class="admin-section">
+        <div class="admin-controls">
+            <h3>Novels</h3>
+            <a href="{{ url_for('add_novel') }}" class="btn small">+ Add Novel</a>
+        </div>
+
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Title</th>
+                    <th>Description</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for novel in novels %}
+                <tr>
+                    <td>{{ novel.id }}</td>
+                    <td>{{ novel.title }}</td>
+                    <td>{{ novel.description }}</td>
+                    <td>
+                        <!-- View Chapters -->
+                        <a href="{{ url_for('manage_chapters', novel_id=novel.id) }}" class="btn small">Manage Chapters</a>
+
+                        <!-- Add Chapter -->
+                        <a href="{{ url_for('add_chapter', novel_id=novel.id) }}" class="btn small">Add Chapter</a>
+
+                        <!-- Edit Novel -->
+                        <a href="{{ url_for('edit_novel', novel_id=novel.id) }}" class="btn small">Edit</a>
+
+                        <!-- Delete Novel (POST for safety) -->
+                        <form action="{{ url_for('delete_novel', novel_id=novel.id) }}" method="POST" style="display:inline;">
+                            <button type="submit" class="btn small" onclick="return confirm('Are you sure you want to delete this novel?')">
+                                Delete
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <!-- ---------------- USERS MANAGEMENT ---------------- -->
+    <div class="admin-section">
+        <h3>Users</h3>
+
+        <table class="admin-table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Email</th>
+                    <th>Admin</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                <tr>
+                    <td>{{ user.id }}</td>
+                    <td>{{ user.username }}</td>
+                    <td>{{ user.email }}</td>
+                    <td>{{ 'Yes' if user.is_admin else 'No' }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</div>
+{% endblock %}

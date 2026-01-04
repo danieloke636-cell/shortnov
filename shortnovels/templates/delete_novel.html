@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Novel - {{ novel.title }}{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>Delete Novel</h2>
+    <p>Are you sure you want to delete the novel: <strong>{{ novel.title }}</strong>?</p>
+    <p>This action cannot be undone!</p>
+
+    <form action="{{ url_for('delete_novel', novel_id=novel.id) }}" method="POST" style="display:inline;">
+    <button type="submit" onclick="return confirm('Delete this novel?')">
+        Delete
+    </button>
+</form>
+
+</div>
+{% endblock %}

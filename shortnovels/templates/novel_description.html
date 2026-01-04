@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}{{ novel.title }}{% endblock %}
+
+{% block content %}
+<div class="container novel-description">
+
+    <!-- Cover Image -->
+    {% if novel.cover %}
+        <img src="{{ url_for('static', filename=novel.cover) }}" alt="{{ novel.title }}" class="novel-cover">
+    {% endif %}
+
+    <!-- Title & Description -->
+    <h2>{{ novel.title }}</h2>
+    <p><strong>Genre:</strong> {{ novel.genre }}</p>
+    <p>{{ novel.description }}</p>
+
+    <!-- Button to Chapter List -->
+    <a href="{{ url_for('novel_chapters', novel_id=novel.id) }}" class="btn green">
+        View Chapters
+    </a>
+
+</div>
+{% endblock %}

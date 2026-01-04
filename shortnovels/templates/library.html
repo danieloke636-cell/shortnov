@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}My Library{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2>My Library</h2>
+
+    {% if novels %}
+        <div class="novel-grid">
+            {% for novel in novels %}
+                <div class="novel-card">
+                    <h3>{{ novel.title }}</h3>
+                    <p>{{ novel.synopsis }}</p>
+                    <a href="/novel/{{ novel.id }}" class="btn">Open</a>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>Your library is empty.</p>
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% block title %}Add Novel{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+
+    <h2>Add New Novel</h2>
+
+    {% if error %}
+        <p class="error">{{ error }}</p>
+    {% endif %}
+    {% if success %}
+        <p class="success">{{ success }}</p>
+    {% endif %}
+
+    <form method="POST" enctype="multipart/form-data" class="admin-form">
+
+        <label>Novel Title</label>
+        <input type="text" name="title" placeholder="Enter novel title" required>
+
+        <label>Author</label>
+        <input type="text" name="author" placeholder="Author name" required>
+
+        <label>Genre</label>
+        <input type="text" name="genre" placeholder="Fantasy, Romance, Action..." required>
+
+        <label>Description</label>
+        <textarea name="description" rows="8" placeholder="Short novel description..." required></textarea>
+
+        <label>Cover Image (optional)</label>
+        <input type="file" name="cover" accept="image/*">
+
+        <label>Status</label>
+        <select name="status">
+            <option value="draft">Draft</option>
+            <option value="published">Published</option>
+        </select>
+
+        <button type="submit" class="btn green">Add Novel</button>
+
+    </form>
+
+</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Edit Chapter{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+
+    <h2>Edit Chapter: "{{ chapter.title }}"</h2>
+
+    <form method="POST" class="admin-form">
+
+        <label>Title</label>
+        <input type="text" name="title" value="{{ chapter.title }}" required>
+
+        <label>Content</label>
+        <textarea name="content" rows="15" required>{{ chapter.content }}</textarea>
+
+        <button type="submit" class="btn green">Update Chapter</button>
+        <a href="{{ url_for('manage_chapters', novel_id=chapter.novel_id) }}" class="btn outline">Cancel</a>
+
+    </form>
+
+</div>
+{% endblock %}
