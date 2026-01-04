@@ -189,7 +189,7 @@ body {
 
 /* ---------------- Footer ---------------- */
 .site-footer {
-    background: #00f;
+    background: #f2f2f2;
     text-align: center;
     padding: 20px 0;
     border-top: 1px solid #ddd;
@@ -617,5 +617,6 @@ body {
     line-height: 1.5;
     margin-bottom: 15px;
 }
+
 
 
