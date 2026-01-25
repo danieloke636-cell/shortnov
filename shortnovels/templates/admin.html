@@ -34,7 +34,6 @@
                 <tr>
                     <th>ID</th>
                     <th>Title</th>
-                    <th>Description</th>
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -43,7 +42,6 @@
                 <tr>
                     <td>{{ novel.id }}</td>
                     <td>{{ novel.title }}</td>
-                    <td>{{ novel.description }}</td>
                     <td>
                         <!-- View Chapters -->
                         <a href="{{ url_for('manage_chapters', novel_id=novel.id) }}" class="btn small">Manage Chapters</a>
